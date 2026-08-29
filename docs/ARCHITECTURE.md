@@ -1,0 +1,5 @@
+# RecoverOS architecture
+
+Core business services are provider-neutral. `providers/razorpay/RazorpayAdapter` is the sole owner of Razorpay shapes and APIs. The raw webhook receiver verifies its HMAC signature, stores a deduplicated receipt using provider ID and semantic fallback key, then dispatches it to a Redis/Celery worker; it never makes an AI or provider call inline.
+
+`RecoveryCase` state transitions are explicit. Qwen3 via local Ollama produces a structured advisory recommendation; the policy engine independently checks paid/disputed/contact/amount/attempt/link/channel/confidence controls. The executor has the only provider action boundary and rechecks current state before acting. Successful payment evidence alone creates an `Outcome`; attribution requires a prior intervention. `AuditEvent` is append-only. The data path also includes BGE embeddings for retrieval, EWMA degradation detection, and a time-aware tabular-model training module that refuses to train without at least 100 genuine labelled merchant cases.

@@ -1,0 +1,17 @@
+currency: INR
+automation_enabled: true
+financial:
+  max_auto_action_amount_minor: 2500000
+  require_human_above_minor: 2500000
+  duplicate_payment_guard: true
+attempts:
+  max_recovery_actions_per_case: 3
+  max_payment_links_per_case: 1
+  cooldown_minutes: 240
+contact:
+  max_messages_per_24h: 1
+  max_messages_per_7d: 3
+  respect_opt_out: true
+  quiet_hours: {start: "20:00", end: "09:00", timezone: "Asia/Kolkata"}
+blocks: {disputed_case: true, suspicious_case: true, missing_consent: true}
+escalation: {confidence_below: 0.65, repeated_failure_count: 3}

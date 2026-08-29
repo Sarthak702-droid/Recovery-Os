@@ -1,0 +1,1 @@
+export const queryKeys={overview:['overview'] as const,cases:['cases'] as const,case:(id:string)=>['case',id] as const,policy:['policy'] as const,degradation:['degradation'] as const,health:['health'] as const,audit:['audit'] as const,intelligence:['intelligence'] as const,integrations:['integrations'] as const};

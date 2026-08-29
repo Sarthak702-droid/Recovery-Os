@@ -1,0 +1,3 @@
+# RecoverOS agent contract
+
+The agent receives curated, normalized case facts only and returns exactly one enumerated action with evidence references, confidence, risks, and fallback. The local Ollama Qwen client is validated against the Pydantic schema; it is advisory and unavailable-model failures fall back to conservative deterministic recommendation. It has no provider client, database authority, secrets, or financial execution power. External notes and metadata are untrusted data, not instructions. Invalid or unavailable AI output falls back to conservative deterministic recommendations and human escalation.
